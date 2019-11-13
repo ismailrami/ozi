@@ -41,10 +41,8 @@ class UserController extends Controller
         $user->act_sal = $request->input('act_sal');
         $user->disponibility= $request->input('disponibility');
         $user->status= $request->input('status');
-
         $user->save();
         return response()->json('success', 201);
-
     }
 
     /**
