@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\User;
+use Response;
 
 class UserController extends Controller
 {
@@ -32,8 +32,8 @@ class UserController extends Controller
         $user = new User();
         $user->first_name= $request->input('first_name');
         $user->last_name= $request->input('last_name');
-        $user->email = $request->input('email');
-        $user->mobile = $request->input('mobile');
+        $user->mail = $request->input('email');
+        $user->mobile = $request->input('tel_mobile');
         $user->driver_licence= $request->input('driver_licence');
         $user->function = $request->input('function');
         $user->source= $request->input('source');
@@ -42,7 +42,7 @@ class UserController extends Controller
         $user->disponibility= $request->input('disponibility');
         $user->status= $request->input('status');
         $user->save();
-        return response()->json('success', 201);
+        return Response::json('success', 201);
     }
 
     /**
@@ -53,8 +53,9 @@ class UserController extends Controller
      */
     public function show($email)
     {
-        $user = User::where('email',$email)->get();
-        return response()->json($user, 200);
+        $user = User::where('mail',$email)->get();
+        ///dd($user);
+        return Response::json($user, 200);
     }
 
     /**
@@ -82,7 +83,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json('success', 201);
+        return Response::json('success', 201);
 
     }
 

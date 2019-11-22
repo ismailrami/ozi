@@ -18,3 +18,4 @@ Route::get('eggplant', function(){
 });
 
 Route::apiResource('users', 'UserController');
+Route::post('login', 'LoginController@login');

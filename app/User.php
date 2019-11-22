@@ -7,7 +7,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class User extends Eloquent
 {
     protected $connection = 'mongodb';
-    
+
     protected $collection = 'users';
 
     /**
@@ -16,7 +16,7 @@ class User extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'email', 
+        'mail',
         'first_name',
         'last_name',
         'city',
