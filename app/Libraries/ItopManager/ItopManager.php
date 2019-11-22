@@ -199,5 +199,23 @@ class ItopManager
 			}
 		}
 		throw new ItopManagerException("Error communication with iTop");
-	}
+    }
+
+    public function login($user , $pwd){
+        $json_data = ['operation' => 'core/check_credentials', 'user' => $user , 'password' => $pwd];
+        $data = array(
+			'auth_user' => $this->auth_user,
+			'auth_pwd' => $this->auth_pwd,
+			'json_data' => ''
+        );
+        $data['json_data'] = json_encode($json_data);
+        $ret = self::request('POST', $this->server, $data);
+        $content = json_decode($ret->content);
+        if($ret->header['reponse_code'] == 200)
+        {
+            return $content->authorized;
+        }else{
+            return 'error';
+        }
+    }
 }
