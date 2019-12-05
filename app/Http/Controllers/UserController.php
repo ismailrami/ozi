@@ -42,7 +42,12 @@ class UserController extends Controller
         $user->disponibility= $request->input('disponibility');
         $user->status= $request->input('status');
         $user->save();
-        return Response::json('success', 201);
+        return response()->json('success', 201);
+
+
+
+
+
     }
 
     /**
